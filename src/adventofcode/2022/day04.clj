@@ -10,7 +10,7 @@
     [str]
     (let [[low high] (map #(Integer/parseInt %) (string/split str #"-"))]
       (into [] (range low (inc high)))))
-  (is [2 3 4 5] (realize-range "2-5")))
+  (is (= [2 3 4 5] (realize-range "2-5"))))
 
 (defn parse-line
   [line]
