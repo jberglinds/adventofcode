@@ -1,10 +1,9 @@
 (ns adventofcode.2022.day05
   "Day 5"
   (:use [clojure.test])
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string]
+            [adventofcode.common :as common]))
 
-(defn transpose [m]
-  (apply mapv vector m))
 
 (defn parse-input
   [input]
@@ -13,7 +12,7 @@
                     (string/split-lines)
                     (drop-last 1)                           ; Drop numbers row
                     (map #(take-nth 4 (drop 1 %)))
-                    (transpose)
+                    (common/transpose)
                     (mapv (fn [stack]
                             (filter #(not (= \space %)) stack))))
         moves (->> moves-input
